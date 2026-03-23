@@ -1,0 +1,82 @@
+@if (open) {
+  <div class="fixed inset-0 z-99999 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm" (click)="onClose()"></div>
+
+    <div class="relative z-10 w-full max-w-5xl overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
+      <div class="flex items-start justify-between border-b border-gray-100 px-6 py-5 dark:border-gray-800">
+        <div>
+          <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Cambiar plan</p>
+          <h3 class="mt-1 text-2xl font-semibold text-gray-900 dark:text-white">Planes disponibles</h3>
+        </div>
+        <button class="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600 hover:bg-gray-200 dark:bg-white/[0.06] dark:text-white/80" (click)="onClose()">
+          Cerrar
+        </button>
+      </div>
+
+      <div class="max-h-[70vh] overflow-y-auto px-6 py-6">
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+          @for (plan of plans; track plan.id_plan) {
+            <div class="flex h-full flex-col rounded-3xl border border-gray-200 bg-gray-50 p-5 transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg dark:border-gray-800 dark:bg-white/[0.04]">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white/90">{{ plan.nombre }}</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{{ plan.descripcion }}</p>
+                </div>
+                @if (plan.id_plan === currentPlanId) {
+                  <span class="rounded-full bg-brand-50 px-3 py-1 text-[11px] font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400">
+                    Actual
+                  </span>
+                }
+              </div>
+
+              <p class="mt-4 text-3xl font-semibold text-gray-900 dark:text-white">{{ getCostLabel(plan) }}</p>
+
+              <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+                <div class="rounded-2xl border border-gray-100 bg-white p-3 dark:border-gray-800 dark:bg-white/[0.02]">
+                  <p class="text-gray-500 dark:text-gray-400">Búsquedas</p>
+                  <p class="mt-1 font-semibold text-gray-900 dark:text-white">{{ plan.limite_busquedas }}</p>
+                </div>
+                <div class="rounded-2xl border border-gray-100 bg-white p-3 dark:border-gray-800 dark:bg-white/[0.02]">
+                  <p class="text-gray-500 dark:text-gray-400">Tickets</p>
+                  <p class="mt-1 font-semibold text-gray-900 dark:text-white">{{ plan.tickets_generados }}</p>
+                </div>
+                <div class="rounded-2xl border border-gray-100 bg-white p-3 dark:border-gray-800 dark:bg-white/[0.02]">
+                  <p class="text-gray-500 dark:text-gray-400">Facturas</p>
+                  <p class="mt-1 font-semibold text-gray-900 dark:text-white">{{ plan.facturas_emitidas }}</p>
+                </div>
+                <div class="rounded-2xl border border-gray-100 bg-white p-3 dark:border-gray-800 dark:bg-white/[0.02]">
+                  <p class="text-gray-500 dark:text-gray-400">Almacenados</p>
+                  <p class="mt-1 font-semibold text-gray-900 dark:text-white">{{ plan.tickets_almacenados }}</p>
+                </div>
+              </div>
+
+              <div class="mt-5 space-y-2">
+                @for (feature of plan.caracteristicas; track feature.orden) {
+                  @if (feature.activo) {
+                    <div class="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-300">
+                      <span class="h-1.5 w-1.5 rounded-full bg-brand-500 dark:bg-brand-400"></span>
+                      {{ feature.texto }}
+                    </div>
+                  }
+                }
+              </div>
+
+              <div class="mt-6">
+                <button
+                  class="w-full rounded-2xl px-4 py-2.5 text-sm font-semibold transition"
+                  [ngClass]="plan.id_plan === currentPlanId
+                    ? 'cursor-not-allowed bg-gray-200 text-gray-500 dark:bg-white/[0.08] dark:text-white/50'
+                    : 'bg-brand-500 text-white hover:bg-brand-600 dark:bg-brand-500 dark:hover:bg-brand-400'"
+                  [disabled]="plan.id_plan === currentPlanId"
+                  (click)="onSelect(plan)"
+                >
+                  {{ plan.id_plan === currentPlanId ? 'Plan actual' : 'Elegir plan' }}
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

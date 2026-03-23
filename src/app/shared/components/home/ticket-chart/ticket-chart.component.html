@@ -1,0 +1,75 @@
+<div class="overflow-hidden rounded-3xl border border-gray-200 bg-white px-6 pt-6 shadow-[0_18px_40px_-30px_rgba(15,23,42,0.45)] dark:border-gray-800 dark:bg-white/[0.03]">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white/90">
+        {{ chartTitle }}
+      </h3>
+      <div class="mt-3 flex items-center gap-2 rounded-lg bg-gray-100 p-1 dark:bg-gray-900">
+        <button
+          (click)="setStatus('guardado')"
+          class="rounded-md px-3 py-1.5 text-sm font-medium transition"
+          [ngClass]="statusButtonClass('guardado')"
+        >
+          Guardados
+        </button>
+        <button
+          (click)="setStatus('facturado')"
+          class="rounded-md px-3 py-1.5 text-sm font-medium transition"
+          [ngClass]="statusButtonClass('facturado')"
+        >
+          Facturados
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="flex items-center gap-1 rounded-lg bg-gray-100 p-1 dark:bg-gray-900">
+        <button
+          (click)="setRange('mensual')"
+          class="rounded-md px-3 py-1.5 text-sm font-medium transition"
+          [ngClass]="rangeButtonClass('mensual')"
+        >
+          Mensual
+        </button>
+        <button
+          (click)="setRange('trimestral')"
+          class="rounded-md px-3 py-1.5 text-sm font-medium transition"
+          [ngClass]="rangeButtonClass('trimestral')"
+        >
+          Trimestral
+        </button>
+        <button
+          (click)="setRange('anual')"
+          class="rounded-md px-3 py-1.5 text-sm font-medium transition"
+          [ngClass]="rangeButtonClass('anual')"
+        >
+          Anual
+        </button>
+      </div>
+      <div class="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-400">
+        <svg class="h-4 w-4 text-gray-400 dark:text-gray-500" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.5 2.5V4.5M13.5 2.5V4.5M3 7H17M4.5 4.5H15.5C16.0523 4.5 16.5 4.94772 16.5 5.5V15.5C16.5 16.0523 16.0523 16.5 15.5 16.5H4.5C3.94772 16.5 3.5 16.0523 3.5 15.5V5.5C3.5 4.94772 3.94772 4.5 4.5 4.5Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ dateRangeLabel }}
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 max-w-full overflow-x-auto custom-scrollbar">
+    <div class="min-w-[700px] xl:min-w-full">
+      <apx-chart
+        [series]="series"
+        [chart]="chart"
+        [xaxis]="xaxis"
+        [plotOptions]="plotOptions"
+        [dataLabels]="dataLabels"
+        [stroke]="stroke"
+        [yaxis]="yaxis"
+        [grid]="grid"
+        [fill]="fill"
+        [tooltip]="tooltip"
+        [colors]="colors"
+      ></apx-chart>
+    </div>
+  </div>
+</div>

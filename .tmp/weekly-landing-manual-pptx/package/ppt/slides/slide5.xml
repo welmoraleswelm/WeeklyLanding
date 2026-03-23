@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+  <p:cSld>
+    <p:spTree>
+      <p:nvGrpSpPr>
+        <p:cNvPr id="1" name=""/>
+        <p:cNvGrpSpPr/>
+        <p:nvPr/>
+      </p:nvGrpSpPr>
+      <p:grpSpPr>
+        <a:xfrm>
+          <a:off x="0" y="0"/>
+          <a:ext cx="0" cy="0"/>
+          <a:chOff x="0" y="0"/>
+          <a:chExt cx="0" cy="0"/>
+        </a:xfrm>
+      </p:grpSpPr>
+      <p:sp>
+  <p:nvSpPr>
+    <p:cNvPr id="2" name="Top Accent"/>
+    <p:cNvSpPr txBox="1"/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="0" y="0"/>
+      <a:ext cx="12191695" cy="201168"/>
+    </a:xfrm>
+    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+    <a:solidFill><a:srgbClr val="1D4ED8"/></a:solidFill>
+    <a:ln><a:noFill/></a:ln>
+  </p:spPr>
+  <p:txBody>
+    <a:bodyPr wrap="square" anchor="t" lIns="0" tIns="0" rIns="0" bIns="0"/>
+    <a:lstStyle/>
+    
+  </p:txBody>
+</p:sp>
+<p:sp>
+  <p:nvSpPr>
+    <p:cNvPr id="3" name="Slide Title"/>
+    <p:cNvSpPr txBox="1"/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="640080" y="384048"/>
+      <a:ext cx="7223760" cy="502920"/>
+    </a:xfrm>
+    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+    <a:noFill/>
+    <a:ln><a:noFill/></a:ln>
+  </p:spPr>
+  <p:txBody>
+    <a:bodyPr wrap="square" anchor="t" lIns="0" tIns="0" rIns="0" bIns="0"/>
+    <a:lstStyle/>
+    <a:p>
+  <a:pPr algn="l">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="2400" b="1" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="0F172A"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>4. Dashboard</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="2400" dirty="0"/>
+</a:p>
+  </p:txBody>
+</p:sp>
+<p:sp>
+  <p:nvSpPr>
+    <p:cNvPr id="4" name="Slide Subtitle"/>
+    <p:cNvSpPr txBox="1"/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="658368" y="868680"/>
+      <a:ext cx="7589520" cy="320040"/>
+    </a:xfrm>
+    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+    <a:noFill/>
+    <a:ln><a:noFill/></a:ln>
+  </p:spPr>
+  <p:txBody>
+    <a:bodyPr wrap="square" anchor="t" lIns="0" tIns="0" rIns="0" bIns="0"/>
+    <a:lstStyle/>
+    <a:p>
+  <a:pPr algn="l">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1100" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="475569"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>Resumen ejecutivo de operacion y consumo</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1100" dirty="0"/>
+</a:p>
+  </p:txBody>
+</p:sp>
+<p:sp>
+  <p:nvSpPr>
+    <p:cNvPr id="5" name="Body Card"/>
+    <p:cNvSpPr txBox="1"/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="640080" y="1234440"/>
+      <a:ext cx="4983480" cy="4407408"/>
+    </a:xfrm>
+    <a:prstGeom prst="roundRect"><a:avLst/></a:prstGeom>
+    <a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill>
+    <a:ln w="19050"><a:solidFill><a:srgbClr val="CBD5E1"/></a:solidFill><a:round/></a:ln>
+  </p:spPr>
+  <p:txBody>
+    <a:bodyPr wrap="square" anchor="t" lIns="128016" tIns="128016" rIns="128016" bIns="128016"/>
+    <a:lstStyle/>
+    <a:p>
+  <a:pPr algn="l">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1300" b="1" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="334155"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>El Dashboard muestra indicadores rapidos para revisar actividad, uso del plan y estado general de la operacion.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1300" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="l">
+    <a:buChar char="â€¢"/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1180" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="334155"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>La tarjeta &quot;Plan&quot; muestra nombre del plan, dias restantes, tickets usados, limite y proyeccion de consumo.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1180" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="l">
+    <a:buChar char="â€¢"/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1180" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="334155"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>La seccion &quot;Tickets&quot; resume guardados, pendientes, cancelados y facturados, junto con total facturado.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1180" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="l">
+    <a:buChar char="â€¢"/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1180" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="334155"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>La tarjeta &quot;Preparacion para facturacion&quot; indica que porcentaje de tickets guardados estan listos para avanzar.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1180" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="l">
+    <a:buChar char="â€¢"/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1180" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="334155"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>La grafica de tickets permite alternar entre guardados y facturados, con vistas mensual, trimestral y anual.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1180" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="l">
+    <a:buChar char="â€¢"/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1180" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="334155"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>Tambien se incluyen listas de top empresas, errores recientes y ultimos tickets para monitoreo rapido.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1180" dirty="0"/>
+</a:p>
+  </p:txBody>
+</p:sp>
+<p:sp>
+  <p:nvSpPr>
+    <p:cNvPr id="6" name="Capture Placeholder"/>
+    <p:cNvSpPr txBox="1"/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="5897880" y="1234440"/>
+      <a:ext cx="5623560" cy="4407408"/>
+    </a:xfrm>
+    <a:prstGeom prst="roundRect"><a:avLst/></a:prstGeom>
+    <a:solidFill><a:srgbClr val="F8FAFC"/></a:solidFill>
+    <a:ln w="19050"><a:solidFill><a:srgbClr val="94A3B8"/></a:solidFill><a:prstDash val="sysDash"/><a:round/></a:ln>
+  </p:spPr>
+  <p:txBody>
+    <a:bodyPr wrap="square" anchor="ctr" lIns="164592" tIns="164592" rIns="164592" bIns="164592"/>
+    <a:lstStyle/>
+    <a:p>
+  <a:pPr algn="ctr">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1700" b="1" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="0F172A"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>ESPACIO PARA CAPTURA</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1700" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="ctr">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="1100" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="475569"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>Captura sugerida: Dashboard completo</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="1100" dirty="0"/>
+</a:p>
+<a:p>
+  <a:pPr algn="ctr">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="980" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="64748B"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>Intenta incluir tarjetas principales, grafica y tablas inferiores.</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="980" dirty="0"/>
+</a:p>
+  </p:txBody>
+</p:sp>
+<p:sp>
+  <p:nvSpPr>
+    <p:cNvPr id="7" name="Footer"/>
+    <p:cNvSpPr txBox="1"/>
+    <p:nvPr/>
+  </p:nvSpPr>
+  <p:spPr>
+    <a:xfrm>
+      <a:off x="640080" y="5897880"/>
+      <a:ext cx="10972800" cy="228600"/>
+    </a:xfrm>
+    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+    <a:noFill/>
+    <a:ln><a:noFill/></a:ln>
+  </p:spPr>
+  <p:txBody>
+    <a:bodyPr wrap="square" anchor="t" lIns="0" tIns="0" rIns="0" bIns="0"/>
+    <a:lstStyle/>
+    <a:p>
+  <a:pPr algn="l">
+    <a:buNone/>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="es-MX" sz="900" dirty="0" smtClean="0">
+      <a:solidFill><a:srgbClr val="64748B"/></a:solidFill>
+      <a:latin typeface="Aptos"/>
+      <a:ea typeface="Aptos"/>
+      <a:cs typeface="Aptos"/>
+    </a:rPr>
+    <a:t>Weekly Landing | Manual de usuario | Diapositiva 5 de 15</a:t>
+  </a:r>
+  <a:endParaRPr lang="es-MX" sz="900" dirty="0"/>
+</a:p>
+  </p:txBody>
+</p:sp>
+    </p:spTree>
+  </p:cSld>
+  <p:clrMapOvr>
+    <a:masterClrMapping/>
+  </p:clrMapOvr>
+</p:sld>

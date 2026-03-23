@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preview – Sign In</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      background: #1c1c24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Grain global */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px;
+    }
+
+    /* ── Card ── */
+    .card {
+      display: flex;
+      width: 860px;
+      min-height: 500px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #2e2e3a;
+      box-shadow: 0 32px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ════════════════
+       IZQUIERDA
+    ════════════════ */
+    .left {
+      width: 44%;
+      background: #20202c;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid #2e2e3a;
+    }
+
+    /* Glow azul sutil arriba-derecha */
+    .left::before {
+      content: '';
+      position: absolute;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    /* Glow tenue abajo-izquierda */
+    .left::after {
+      content: '';
+      position: absolute;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+      bottom: -70px; left: -70px;
+      pointer-events: none;
+    }
+
+    .left-top { position: relative; z-index: 1; }
+    .left-bottom { position: relative; z-index: 1; }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 52px;
+    }
+
+    .logo-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #3b82f6;
+      box-shadow: 0 0 8px rgba(59,130,246,0.6);
+    }
+
+    .logo-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+      letter-spacing: 0.3px;
+    }
+
+    .welcome {
+      font-size: 30px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+
+    .welcome-sub {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    /* Features en la izquierda */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 40px;
+    }
+
+    .feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feat-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #3b82f6;
+      margin-top: 6px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .feat-text h5 {
+      font-size: 12px;
+      font-weight: 500;
+      color: #6b7280;
+      margin-bottom: 2px;
+    }
+
+    .feat-text p {
+      font-size: 11px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .left-sep {
+      height: 1px;
+      background: #2a2a38;
+      margin-bottom: 16px;
+    }
+
+    .site-url {
+      font-size: 11px;
+      color: #4a4a5e;
+      letter-spacing: 0.3px;
+    }
+
+    /* ════════════════
+       DERECHA
+    ════════════════ */
+    .right {
+      width: 56%;
+      background: #18182280;
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .lock {
+      font-size: 18px;
+      margin-bottom: 32px;
+      opacity: 0.15;
+      text-align: right;
+    }
+
+    .right h2 {
+      font-size: 22px;
+      font-weight: 500;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .right .desc {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 36px;
+    }
+
+    .field-wrap {
+      margin-bottom: 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 11px;
+      color: #4b5563;
+      letter-spacing: 0.4px;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+
+    .field {
+      width: 100%;
+      background: #1e1e2a;
+      border: 1px solid #2e2e3e;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: #cbd5e1;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field::placeholder { color: #3d3d50; }
+    .field:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+
+    .btn {
+      width: 100%;
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s, box-shadow 0.2s;
+      margin-top: 6px;
+    }
+    .btn:hover {
+      background: #2563eb;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+    }
+
+    .or-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0;
+    }
+    .or-row::before, .or-row::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #1a1a22;
+    }
+    .or-text { font-size: 11px; color: #5a5a6e; }
+
+    .signup {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .signup a { color: #3b82f6; text-decoration: none; }
+    .signup a:hover { color: #60a5fa; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- IZQUIERDA -->
+    <div class="left">
+      <div class="left-top">
+        <div class="logo-row">
+          <div class="logo-dot"></div>
+          <span class="logo-name">Tixete</span>
+        </div>
+
+        <div class="welcome">Bienvenido<br>de vuelta.</div>
+        <p class="welcome-sub">Inicia sesión para acceder<br>a tu cuenta.</p>
+
+        <div class="features">
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div class="feat-text">
+              <h5>Tickets sin fricción</h5>
+              <p>Crea y resuelve tickets en segundos.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div class="feat-text">
+              <h5>Facturación automática</h5>
+              <p>Cobra al cerrar cada ticket.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div class="feat-text">
+              <h5>Dashboard en tiempo real</h5>
+              <p>Métricas claras de tu equipo.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div class="feat-text">
+              <h5>Seguridad MFA</h5>
+              <p>Roles, permisos y autenticación robusta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="left-bottom">
+        <div class="left-sep"></div>
+        <div class="site-url">www.tixete.com</div>
+      </div>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="right">
+      <div class="lock">🔐</div>
+
+      <h2>Iniciar sesión</h2>
+      <p class="desc">Ingresa tus credenciales para continuar.</p>
+
+      <div class="field-wrap">
+        <label class="field-label">Correo</label>
+        <input class="field" type="email" placeholder="info@gmail.com"/>
+      </div>
+
+      <div class="field-wrap">
+        <label class="field-label">Contraseña</label>
+        <input class="field" type="password" placeholder="••••••••"/>
+      </div>
+
+      <button class="btn">
+        Continuar →
+      </button>
+
+      <div class="or-row">
+        <span class="or-text">o continúa con</span>
+      </div>
+
+      <div class="signup">
+        ¿No tienes cuenta? <a href="#">Regístrate</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

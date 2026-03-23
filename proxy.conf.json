@@ -1,0 +1,21 @@
+//TV AZTECA
+{
+  "/api": {
+    "target": "https://localhost:5001",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
+
+
+//CASA
+// {
+//   "/api": {
+//     "target": "https://localhost:5001",
+//     "secure": false,
+//     "changeOrigin": true,
+//     "logLevel": "debug"
+//   }
+// }
+

@@ -1,0 +1,69 @@
+<div class="auth-wrapper">
+
+  <div class="grain"></div>
+
+  <div class="auth-card">
+
+    @if (showLeft) {
+    <div class="auth-left">
+      <div class="glow-tr"></div>
+      <div class="glow-bl"></div>
+
+      <div class="auth-left-top">
+        <div class="brand-row">
+          <div class="brand-dot"></div>
+          <span class="brand-name">Tixete</span>
+        </div>
+        <h2 class="welcome-title">Bienvenido<br>de vuelta.</h2>
+        <p class="welcome-sub">Inicia sesión para acceder<br>a tu cuenta.</p>
+
+        <div class="features-list">
+          <div class="feat-item">
+            <div class="feat-dot"></div>
+            <div>
+              <h5 class="feat-title">Tickets sin fricción</h5>
+              <p class="feat-desc">Crea y resuelve tickets en segundos. Todo en un solo lugar.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-dot"></div>
+            <div>
+              <h5 class="feat-title">Facturación automatizada</h5>
+              <p class="feat-desc">Genera facturas y cobra automáticamente al cerrar cada ticket.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-dot"></div>
+            <div>
+              <h5 class="feat-title">Dashboard en tiempo real</h5>
+              <p class="feat-desc">Métricas claras de tu equipo y facturación.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-dot"></div>
+            <div>
+              <h5 class="feat-title">Seguridad MFA</h5>
+              <p class="feat-desc">Roles, permisos y autenticación robusta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-left-bottom">
+        <div class="left-sep"></div>
+        <span class="site-url">www.tixete.com</span>
+      </div>
+    </div>
+    }
+
+    <div class="auth-right">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+
+  <div class="fixed bottom-4 right-4 z-50">
+    <app-theme-toggle-two />
+  </div>
+
+</div>

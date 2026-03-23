@@ -1,0 +1,84 @@
+<div class="h-full rounded-3xl border border-gray-200 bg-white p-6 shadow-[0_18px_40px_-30px_rgba(15,23,42,0.45)] dark:border-gray-800 dark:bg-white/[0.03]">
+  <h3 class="text-xl font-semibold text-gray-800 sm:text-2xl lg:text-3xl dark:text-white/90">Ahorro de tiempo</h3>
+  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Estimado en este periodo</p>
+
+  <div class="mt-6 flex items-center gap-4">
+    <div class="relative h-20 w-20 shrink-0">
+      <svg viewBox="0 0 80 80" class="h-20 w-20">
+        <circle cx="40" cy="40" r="32" stroke="#E5E7EB" stroke-width="8" fill="none" />
+        <circle
+          cx="40"
+          cy="40"
+          r="32"
+          stroke="#465FFF"
+          stroke-width="8"
+          fill="none"
+          stroke-linecap="round"
+          stroke-dasharray="201"
+          [attr.stroke-dashoffset]="donutOffset"
+          transform="rotate(-90 40 40)"
+        />
+      </svg>
+
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-lg font-semibold text-gray-800 dark:text-white">{{ metrics.preparationPercent }}%</span>
+      </div>
+    </div>
+
+    <div class="min-w-0">
+      <p class="text-xl font-semibold text-gray-800 dark:text-white/90">Ahorraste</p>
+
+      <div class="mt-2 flex flex-wrap items-center gap-2">
+        <span class="text-2xl font-semibold text-gray-900 dark:text-white">
+          {{ savedTimeLabel }}
+        </span>
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.37087 7.99982C8.36197 6.47544 9.34354 4.90951 9.95605 3.37694C10.2157 2.72714 11.0161 2.42181 11.5727 2.84585C14.9439 5.41391 20 10.3781 20 15C20 16.1736 19.8008 17.1655 19.4698 17.9998M5.46561 10.9998C4.61333 12.4537 4 13.8131 4 15C4 18.1069 6.24558 20.3088 8.08142 21.3715C8.50204 21.615 8.91147 21.1071 8.69077 20.6741C8.20479 19.7206 7.73333 18.4893 7.73333 17.5C7.73333 16.1286 8.77825 15.0265 9.52461 14.3198C9.71604 14.1386 10.016 14.1414 10.182 14.3462C10.4901 14.7265 10.7982 15.2079 11.1063 15.5975C11.2872 15.8262 11.6241 15.806 11.7828 15.5614C12.7689 14.0418 12.9976 12.1029 13.0507 10.6537C13.0667 10.2163 13.5786 10.0014 13.8721 10.3261C15.1559 11.7465 16.8 14.0494 16.8 16C16.8 17.8159 15.7823 19.7462 14.9019 21.0115C14.6438 21.3823 14.9274 21.8853 15.3588 21.751C15.8734 21.5909 16.4265 21.3507 16.9653 21.0115"
+              stroke="#e00007"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>
+          </svg>
+        </span>
+
+        <span class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-[12px] font-semibold text-brand-700 dark:bg-brand-500/15 dark:text-brand-400">
+          {{ savingsBadge }}
+        </span>
+      </div>
+
+      <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+        Basado en un ahorro promedio estimado por ticket procesado en la plataforma.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-6 rounded-2xl border border-gray-100 p-4 dark:border-gray-800 dark:bg-white/[0.02]">
+    <div class="flex items-start justify-between gap-3">
+      <div class="min-w-0">
+        <p class="text-sm font-semibold text-gray-800 dark:text-white/90">Tickets procesados</p>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Se estiman ~{{ metrics.minutesPerTicket }} min de ahorro por ticket procesado</p>
+      </div>
+
+      <span class="inline-flex items-center rounded-full bg-gray-50 px-3 py-1 text-sm font-semibold text-gray-800 dark:bg-white/[0.06] dark:text-white/90">
+        {{ metrics.ticketsProcessed }}
+      </span>
+    </div>
+
+    <div class="mt-4">
+      <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+        <span>Manual</span>
+        <span>Automatizado</span>
+      </div>
+
+      <div class="mt-2 h-2 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+        <div class="h-2 rounded-full bg-brand-500 dark:bg-brand-400" [style.width.%]="metrics.preparationPercent"></div>
+      </div>
+
+      <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+        Tu proceso fue m&aacute;s r&aacute;pido gracias a la automatizaci&oacute;n y a la lectura previa de tus tickets.
+      </p>
+    </div>
+  </div>
+</div>

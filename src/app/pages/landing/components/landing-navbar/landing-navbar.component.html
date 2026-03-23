@@ -1,0 +1,126 @@
+﻿<header
+  class="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
+  [ngClass]="{
+    'py-4': !isScrolled(),
+    'py-2': isScrolled()
+  }"
+>
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <nav
+      class="relative flex items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-500 md:px-6"
+      [ngClass]="{
+        'border-transparent bg-white/60 shadow-lg shadow-gray-900/5 backdrop-blur-xl dark:bg-gray-900/60': isScrolled(),
+        'border-gray-200/50 bg-white/80 backdrop-blur-md dark:border-gray-800/50 dark:bg-gray-900/80': !isScrolled()
+      }"
+    >
+      <!-- Logo -->
+      <a href="#inicio" class="group flex items-center gap-2.5">
+        <div class="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/30 transition-transform duration-300 group-hover:scale-105">
+          <span class="text-lg font-bold">T</span>
+          <div class="absolute inset-0 bg-white/20 opacity-0 transition-opacity group-hover:opacity-100"></div>
+        </div>
+        <span class="text-lg font-bold text-gray-900 dark:text-white">Tixete</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-1 md:flex">
+        @for (link of links; track link.href) {
+          <a
+            class="relative px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            [href]="link.href"
+          >
+            {{ link.label }}
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 scale-x-0 rounded-full bg-brand-500 transition-transform duration-300 hover:scale-x-100"></span>
+          </a>
+        }
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden items-center gap-3 md:flex">
+        <a
+          href="/signin"
+          class="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+        >
+          Iniciar sesi&oacute;n
+        </a>
+        <a
+          href="#planes"
+          class="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-brand-500/40"
+        >
+          <span class="relative z-10">Empezar gratis</span>
+          <svg class="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-600 to-brand-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="relative flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 md:hidden"
+        type="button"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Toggle menu"
+      >
+        <svg
+          class="h-5 w-5 transition-transform duration-300"
+          [class.rotate-90]="isMobileMenuOpen()"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          @if (!isMobileMenuOpen()) {
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          } @else {
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          }
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    @if (isMobileMenuOpen()) {
+      <div
+        class="absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-2xl border border-gray-200 bg-white/95 shadow-xl backdrop-blur-xl dark:border-gray-800 dark:bg-gray-900/95 md:hidden"
+      >
+        <div class="p-4">
+          <div class="space-y-1">
+            @for (link of links; track link.href) {
+              <a
+                class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+                [href]="link.href"
+                (click)="closeMobileMenu()"
+              >
+                {{ link.label }}
+              </a>
+            }
+          </div>
+
+          <div class="mt-4 border-t border-gray-200 pt-4 dark:border-gray-800">
+            <a
+              href="/signin"
+              class="mb-2 block rounded-xl px-4 py-3 text-center text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+              (click)="closeMobileMenu()"
+            >
+              Iniciar sesi&oacute;n
+            </a>
+            <a
+              href="#planes"
+              class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/30"
+              (click)="closeMobileMenu()"
+            >
+              Empezar gratis
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</header>
+
+

@@ -1,0 +1,30 @@
+﻿<div class="col-span-12 xl:col-span-6 h-full">
+  <div class="h-full rounded-3xl border border-gray-200 bg-white p-6 shadow-[0_18px_40px_-30px_rgba(15,23,42,0.45)] dark:border-gray-800 dark:bg-white/[0.03]">
+    <div class="flex items-start justify-between">
+      <div>
+        <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white/90">Top empresas</h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Empresas con mas tickets</p>
+      </div>
+      <span class="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-600 text-[10px] dark:bg-brand-500/15 dark:text-brand-400">Este mes</span>
+    </div>
+
+    <div class="mt-6 max-h-[290px] overflow-y-auto pr-1">
+      <div class="space-y-4">
+        @for (company of companies; track company.name; let index = $index) {
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-sm font-semibold text-gray-600 dark:bg-white/[0.06] dark:text-white/80">{{ index + 1 }}</span>
+            <div>
+              <p class="text-sm font-semibold text-gray-800 dark:text-white/90">{{ company.name }}</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">{{ formatTickets(company.tickets) }}</p>
+            </div>
+          </div>
+          <span class="text-sm font-semibold text-gray-800 dark:text-white">{{ formatAmount(company.amount) }}</span>
+        </div>
+        } @empty {
+        <p class="text-sm text-gray-500 dark:text-gray-400">Sin datos para mostrar.</p>
+        }
+      </div>
+    </div>
+  </div>
+</div>

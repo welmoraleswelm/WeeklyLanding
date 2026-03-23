@@ -1,0 +1,284 @@
+﻿<app-page-breadcrumb pageTitle="Historial de soporte" />
+
+<div class="space-y-6">
+  <section class="relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-[0_18px_40px_-30px_rgba(15,23,42,0.35)] dark:border-gray-800 dark:bg-white/[0.03]">
+    <div class="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-brand-500/10 to-brand-600/5 blur-3xl"></div>
+    <div class="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500/10 to-cyan-500/5 blur-3xl"></div>
+
+    <div class="relative p-6 sm:p-8">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+        <div class="flex items-start gap-4">
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 shadow-lg shadow-brand-500/25">
+            <img class="h-7 w-7" src="/images/icons/ticket.svg" alt="">
+          </div>
+          <div class="min-w-0">
+            <h1 class="text-xl font-semibold text-gray-800 dark:text-white/90 md:text-2xl lg:text-3xl">Historial de soporte</h1>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Consulta y da seguimiento a todos tus tickets de soporte.</p>
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <a
+            routerLink="/support"
+            class="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+          >
+            Volver a soporte
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
+      <p class="text-2xl font-semibold text-gray-800 dark:text-white">{{ summary.total }}</p>
+      <p class="text-xs text-gray-500 dark:text-gray-400">Total</p>
+    </div>
+    <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
+      <p class="text-2xl font-semibold text-sky-700 dark:text-sky-300">{{ summary.abiertos }}</p>
+      <p class="text-xs text-gray-500 dark:text-gray-400">Abiertos</p>
+    </div>
+    <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
+      <p class="text-2xl font-semibold text-amber-700 dark:text-amber-300">{{ summary.enProceso }}</p>
+      <p class="text-xs text-gray-500 dark:text-gray-400">En proceso</p>
+    </div>
+    <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
+      <p class="text-2xl font-semibold text-emerald-700 dark:text-emerald-300">{{ summary.cerrados }}</p>
+      <p class="text-xs text-gray-500 dark:text-gray-400">Completados</p>
+    </div>
+  </div>
+
+  <div class="rounded-3xl border border-gray-200 bg-white p-4 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900 lg:p-6">
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-wrap gap-2">
+        <button (click)="setFilter('todos')" [class]="activeFilter === 'todos' ? 'bg-brand-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'" class="rounded-full px-4 py-2 text-sm font-medium transition">Todos</button>
+        <button (click)="setFilter('abierto')" [class]="activeFilter === 'abierto' ? 'bg-sky-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'" class="rounded-full px-4 py-2 text-sm font-medium transition">Abiertos</button>
+        <button (click)="setFilter('en_proceso')" [class]="activeFilter === 'en_proceso' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'" class="rounded-full px-4 py-2 text-sm font-medium transition">En proceso</button>
+        <button (click)="setFilter('cerrado')" [class]="activeFilter === 'cerrado' ? 'bg-emerald-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'" class="rounded-full px-4 py-2 text-sm font-medium transition">Completados</button>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+          <input type="text" [(ngModel)]="searchQuery" placeholder="Buscar por asunto, folio o categorÃ­a" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent pl-10 pr-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-500" />
+        </div>
+
+        <div>
+          <input #dateFromInput type="date" [(ngModel)]="dateFrom" (click)="openDatePicker(dateFromInput)" (focus)="openDatePicker(dateFromInput)" (keydown)="$event.preventDefault()" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+        </div>
+
+        <div>
+          <input #dateToInput type="date" [(ngModel)]="dateTo" (click)="openDatePicker(dateToInput)" (focus)="openDatePicker(dateToInput)" (keydown)="$event.preventDefault()" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+        </div>
+
+        <div class="relative">
+          <select [(ngModel)]="sortOption" class="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 pr-10 text-sm text-gray-800 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+            <option value="recientes">MÃ¡s recientes</option>
+            <option value="antiguos">MÃ¡s antiguos</option>
+          </select>
+          <svg class="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button (click)="clearFilters()" class="rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+          Limpiar campos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-3xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
+    @if (viewState === 'loading') {
+      <div class="p-6 text-sm text-gray-500 dark:text-gray-400">Cargando historial...</div>
+    }
+
+    @if (viewState === 'error') {
+      <div class="flex flex-col items-center justify-center px-6 py-16 text-center">
+        <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white">Error al cargar el historial</h3>
+        <button (click)="loadHistory()" class="rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand-600">
+          Reintentar
+        </button>
+      </div>
+    }
+
+    @if (viewState === 'empty' || (viewState === 'data' && filteredTickets.length === 0)) {
+      <div class="flex flex-col items-center justify-center px-6 py-16 text-center">
+        <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white">No existe datos para mostrar</h3>
+      </div>
+    }
+
+    @if (viewState === 'data' && filteredTickets.length > 0) {
+      <div class="hidden overflow-x-auto lg:block">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-gray-200 text-left dark:border-gray-700">
+              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Fecha</th>
+              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Folio</th>
+              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Asunto</th>
+              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">CategorÃ­a</th>
+              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Prioridad</th>
+              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Estatus</th>
+              <th class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Acciones</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            @for (ticket of filteredTickets; track ticket.id) {
+              <tr class="transition hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">{{ ticket.createdAt }}</td>
+                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-800 dark:text-white">{{ ticket.number }}</td>
+                <td class="px-6 py-4 text-sm font-medium text-gray-800 dark:text-white">{{ ticket.title }}</td>
+                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">{{ ticket.category }}</td>
+                <td class="whitespace-nowrap px-6 py-4">
+                  <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold capitalize" [ngClass]="priorityClasses(ticket.priority)">
+                    {{ ticket.priority }}
+                  </span>
+                </td>
+                <td class="whitespace-nowrap px-6 py-4">
+                  <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold" [ngClass]="statusClasses(ticket.status)">
+                    {{ statusLabel(ticket.status) }}
+                  </span>
+                </td>
+                <td class="whitespace-nowrap px-6 py-4 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button
+                      (click)="onViewTicketDetails(ticket)"
+                      class="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                      title="Ver información">
+	                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+	                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12s3.75-7.5 9.75-7.5 9.75 7.5 9.75 7.5-3.75 7.5-9.75 7.5S2.25 12 2.25 12z" />
+	                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75A3.75 3.75 0 1012 8.25a3.75 3.75 0 000 7.5z" />
+	                      </svg>
+                    </button>
+                    @if (ticket.hasImage) {
+                      <button
+                        (click)="onViewTicketImage(ticket)"
+                        class="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                        title="Ver imagen">
+	                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+	                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-7.5A2.25 2.25 0 0017.25 4.5H6.75A2.25 2.25 0 004.5 6.75v10.5A2.25 2.25 0 006.75 19.5h7.5" />
+	                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25h6m-3-3v6" />
+	                          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25l2.25-2.25 2.25 2.25 2.25-3 1.5 2.25" />
+	                        </svg>
+                      </button>
+                    }
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divide-y divide-gray-100 lg:hidden dark:divide-gray-800">
+        @for (ticket of filteredTickets; track ticket.id) {
+          <div class="space-y-3 p-4">
+            <div class="flex items-start justify-between gap-4">
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-semibold text-gray-800 dark:text-white">{{ ticket.title }}</p>
+                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ ticket.number }} Â· {{ ticket.createdAt }}</p>
+              </div>
+              <span class="shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold" [ngClass]="statusClasses(ticket.status)">
+                {{ statusLabel(ticket.status) }}
+              </span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold capitalize" [ngClass]="priorityClasses(ticket.priority)">
+                {{ ticket.priority }}
+              </span>
+              <span class="inline-flex rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 dark:bg-white/10 dark:text-gray-300">
+                {{ ticket.category }}
+              </span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button
+                (click)="onViewTicketDetails(ticket)"
+                class="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                title="Ver información">
+	                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+	                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-7.5A2.25 2.25 0 0017.25 4.5H6.75A2.25 2.25 0 004.5 6.75v10.5A2.25 2.25 0 006.75 19.5h7.5" />
+	                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25h6m-3-3v6" />
+	                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25l2.25-2.25 2.25 2.25 2.25-3 1.5 2.25" />
+	                  </svg>
+              </button>
+              @if (ticket.hasImage) {
+                <button
+                  (click)="onViewTicketImage(ticket)"
+                  class="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  title="Ver imagen">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12s3.75-7.5 9.75-7.5 9.75 7.5 9.75 7.5-3.75 7.5-9.75 7.5S2.25 12 2.25 12z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75A3.75 3.75 0 1012 8.25a3.75 3.75 0 000 7.5z" />
+                  </svg>
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
+
+<app-modal [isOpen]="selectedTicketDetail() !== null" (close)="closeTicketDetailModal()" className="max-w-2xl mx-4 sm:mx-auto">
+  @if (selectedTicketDetail(); as detail) {
+    <div class="p-6 sm:p-8">
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Detalle del ticket</h2>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ detail.folio }}</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04]">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Asunto</p>
+          <p class="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{{ detail.asunto }}</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04]">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Estatus</p>
+          <p class="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{{ detail.estatus }}</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04]">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">CategorÃ­a</p>
+          <p class="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{{ detail.categoria }}</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04]">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Prioridad</p>
+          <span class="mt-2 inline-flex rounded-full px-3 py-1 text-sm font-semibold capitalize" [ngClass]="priorityClasses(detail.prioridad)">
+            {{ detail.prioridad }}
+          </span>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04] sm:col-span-2">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">DescripciÃ³n</p>
+          <p class="mt-2 text-sm text-gray-700 dark:text-gray-200">{{ detail.descripcion }}</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04]">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Creado</p>
+          <p class="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{{ detail.fechaCreacion }}</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-white/[0.04]">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Actualizado</p>
+          <p class="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{{ detail.fechaActualizacion }}</p>
+        </div>
+      </div>
+    </div>
+  }
+</app-modal>
+
+<app-modal [isOpen]="selectedTicketImage() !== null" (close)="closeTicketImageModal()" className="max-w-4xl mx-4 sm:mx-auto">
+  @if (selectedTicketImage(); as image) {
+    <div class="p-6 sm:p-8">
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Imagen del ticket</h2>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ image.nombreArchivo }}</p>
+      </div>
+      <div class="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-white/[0.04]">
+        <img [src]="selectedTicketImageSrc" [alt]="image.nombreArchivo" class="max-h-[70vh] w-full rounded-xl object-contain" />
+      </div>
+    </div>
+  }
+</app-modal>
+

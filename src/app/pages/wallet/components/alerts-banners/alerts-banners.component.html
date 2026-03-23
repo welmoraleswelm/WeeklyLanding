@@ -1,0 +1,58 @@
+<section class="space-y-6">
+  @for (alert of alerts; track alert.id) {
+    <div class="group relative overflow-hidden rounded-2xl p-4 transition-all" [class]="getBannerClasses(alert.type)">
+      <!-- Decorative gradient -->
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+
+      <div class="relative flex flex-wrap items-start justify-between gap-4">
+        <div class="flex items-start gap-3">
+          <!-- Alert icon -->
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" [ngClass]="{
+            'bg-red-100 dark:bg-red-500/20': alert.type === 'payment_failed',
+            'bg-yellow-100 dark:bg-yellow-500/20': alert.type === 'card_expiring',
+            'bg-blue-100 dark:bg-blue-500/20': alert.type === 'usage_warning'
+          }">
+            @if (alert.type === 'payment_failed') {
+              <svg class="h-5 w-5 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+              </svg>
+            } @else if (alert.type === 'card_expiring') {
+              <svg class="h-5 w-5 text-yellow-600 dark:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            } @else {
+              <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+              </svg>
+            }
+          </div>
+
+          <div>
+            <p class="text-sm font-bold">{{ alert.title }}</p>
+            <p class="mt-1 text-sm opacity-80">{{ alert.description }}</p>
+            @if (alert.ctaLabel) {
+              <button
+                class="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-gray-800 shadow-sm ring-1 ring-gray-900/5 transition-all hover:bg-white hover:shadow-md active:scale-[0.98] dark:bg-white/15 dark:text-white dark:ring-white/10 dark:hover:bg-white/20"
+                (click)="onAction(alert)">
+                {{ alert.ctaLabel }}
+                <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            }
+          </div>
+        </div>
+
+        <button
+          class="flex h-7 w-7 items-center justify-center rounded-lg bg-white/50 text-gray-600 transition-all hover:bg-white hover:text-gray-900 active:scale-95 dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/20 dark:hover:text-white"
+          aria-label="Cerrar alerta"
+          (click)="onDismiss(alert.id)"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  }
+</section>
